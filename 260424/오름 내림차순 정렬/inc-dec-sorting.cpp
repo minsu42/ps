@@ -12,9 +12,9 @@ static inline void swap(int* a, int* b) {
 template<typename CMP>
 static inline int pivot(int* a, int lo, int hi, CMP cmp) {
     int mid = lo + ((hi - lo) >> 1);
-    if (cmp(a[lo], a[mid])) swap(&a[lo], &a[mid]);
-    if (cmp(a[mid], a[hi])) swap(&a[mid], &a[hi]);
-    if (cmp(a[lo], a[mid])) swap(&a[lo], &a[mid]);
+    if (cmp(a[mid], a[lo])) swap(&a[lo], &a[mid]);
+    if (cmp(a[hi], a[mid])) swap(&a[mid], &a[hi]);
+    if (cmp(a[mid], a[lo])) swap(&a[lo], &a[mid]);
 
     swap(&a[mid], &a[hi - 1]);
     return a[hi - 1];
@@ -88,4 +88,7 @@ int main(void) {
         cout << a[i] << " ";
     }
     
+    delete[] a;
+
+    return 0;
 }
